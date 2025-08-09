@@ -2,50 +2,37 @@
 <html>
   <head>
     <title>Crystal AR Card</title>
-
+    
     <!-- A-Frame and AR.js -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
-
-    <!-- Shader for YouTube Embed -->
-    <script src="https://unpkg.com/aframe-html-shader@1.0.0/dist/aframe-html-shader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+    
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
-
-  <body style="margin: 0; overflow: hidden;">
-
-    <!-- ✅ YouTube Video Element (hidden) -->
-    <div id="yt-video" style="display: none;">
-      <iframe width="560" height="315"
-              src="https://www.youtube.com/embed/V9N7177jXHo?autoplay=1"
-              title="YouTube video player"
-              frameborder="0"
-              allow="autoplay; encrypted-media"
-              allowfullscreen></iframe>
-    </div>
-
-    <!-- ✅ AR Scene -->
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-      <!-- ✅ Custom Marker -->
-      <a-marker type="pattern" url="arcard.patt">
-
-        <!-- 🔳 Profile Photo or Logo -->
-        <a-image src="profile.jpg" position="-1 1 0" height="0.5" width="0.5"></a-image>
-
-        <!-- 🔤 Name or Business -->
-        <a-text value="Mudassir's AR Card" 
-                position="-0.5 0.5 0" 
-                scale="1 1 1" 
-                color="white"></a-text>
-
-        <!-- 🎥 YouTube video texture (optional in AR) -->
-        <a-plane position="0 0 0" width="1.5" height="1"
-                 material="shader: html; target: #yt-video;">
-        </a-plane>
-
+  
+  <body>
+    <a-scene 
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+      vr-mode-ui="enabled: false">
+      
+      <!-- Marker -->
+      <a-marker preset="hiro">
+        <a-box position="0 0.5 0" material="color: red;"></a-box>
       </a-marker>
-
-      <!-- 📷 Camera -->
+      
+      <!-- Camera -->
       <a-entity camera></a-entity>
     </a-scene>
   </body>
 </html>
+
+
