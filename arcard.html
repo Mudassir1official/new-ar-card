@@ -1,20 +1,15 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Crystal AR Card</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
 
-    <!-- A-Frame and AR.js -->
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
-
-    <!-- Shader for YouTube Embed -->
-    <script src="https://unpkg.com/aframe-html-shader@1.0.0/dist/aframe-html-shader.min.js"></script>
+    <!-- Import AR.js version w/o NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
 
-  <body style="margin: 0; overflow: hidden;">
-
-    <!-- ✅ YouTube Video Element (hidden) -->
+  <body style="margin: 0px; overflow: hidden;">
+     <!-- ✅ YouTube Video Element (hidden) -->
     <div id="yt-video" style="display: none;">
       <iframe width="560" height="315"
               src="https://www.youtube.com/embed/V9N7177jXHo?autoplay=1"
@@ -23,48 +18,17 @@
               allow="autoplay; encrypted-media"
               allowfullscreen></iframe>
     </div>
-
-    <!-- ✅ AR Scene -->
-    <a-scene embedded arjs="sourceType: webcam;">
-
-      <!-- ✅ Custom Marker -->
-      <a-marker type="pattern" url="arcard.patt">
-
-        <!-- 🔳 Profile Photo or Logo -->
-        <a-image src="profile.jpg" position="-1 1 0" height="0.5" width="0.5"></a-image>
-
-        <!-- 🔤 Name or Business -->
-        <a-text value="Oscar\nFalmer" position="-0.3 1.1 0" color="white" width="2"></a-text>
-
-        <!-- 🌐 Website Preview -->
-        <a-image src="website-preview.jpg" position="1 0.6 0" width="1.5" height="1"></a-image>
-
-        <!-- 🔘 Icon Buttons -->
-        <a-image src="telephone.png" position="-1 -0.2 0" width="0.3" height="0.3"
-                 onclick="window.open('tel:+123456789')"></a-image>
-
-        <a-image src="email.png" position="-0.5 -0.2 0" width="0.3" height="0.3"
-                 onclick="window.open('mailto:oscar@example.com')"></a-image>
-
-        <a-image src="twitter.png" position="0 -0.2 0" width="0.3" height="0.3"
-                 onclick="window.open('https://twitter.com/oscar')"></a-image>
-
-        <a-image src="icons/video.png" position="0.5 -0.2 0" width="0.3" height="0.3"
-                 onclick="window.open('https://zoom.us')"></a-image>
-
-        <!-- 🧠 Optional: Clickable Text Link -->
-        <a-text value="Visit Site" position="0.8 -0.6 0" color="#ccc" width="1"
-                onclick="window.open('https://your-website.com')"></a-text>
-
-        <!-- ▶️ Embedded YouTube Video -->
-        <a-plane position="0 0.3 0" width="1.5" height="1"
-                 material="shader: html; target: #yt-video"
-                 rotation="-90 0 0">
-        </a-plane>
+    <a-scene embedded arjs>
+      <a-marker preset="arcard.patt">
+        <!--gltf-model="../models/trex/scene.gltf"-->
+        <!-- <a-entity
+          position="0 0 0"
+          rotation="0 0 0"
+          scale="0.06 0.06 0.06"
+          gltf-model="../models/trex/scene.gltf">
+        </a-entity> -->
 
       </a-marker>
-
-      <!-- 🎥 Camera -->
       <a-entity camera></a-entity>
     </a-scene>
   </body>
